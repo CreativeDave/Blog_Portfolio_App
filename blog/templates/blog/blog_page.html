@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+
+{% block header %} {% include 'home/menu.html' %} {% endblock %}
+
+{% block content %}
+
+<div class="card-inner active" id="blog-card">
+    <div class="row card-container">
+            
+            <!--Card Wrap -->
+        <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+            
+            <!-- Blog Image -->
+            {% with page=page.get_parent.specific %}
+            {% with page.main_image as main_image %}
+                {% if main_image %}
+            <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6"style="margin:0;padding:0;">{% image main_image original %}</div>
+                {% endif %}
+            {% endwith %}
+            {% endwith %}       
+                    
+                <!-- Inner Top -->
+                <div class="content inner-top">
+                    <div class="row">
+                        <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                            <div class="title-bg">{{ page.title }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Blog Single -->
+                <div class="content blog-single">
+
+                    <!-- content -->
+                    <div class="row">
+                        <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                            <div class="post-box card-box">
+
+                                <!-- blog detail -->
+                                <h1>{{ page.intro }}</h1>                       
+                                <div class="blog-detail">Posted {{ page.date }}</div> 
+
+                                <!-- blog content -->
+                                <div class="blog-content">
+                                    {% for item in page.gallery_images.all %}
+                                    <div style="float: center; margin: 10px">
+                                        {% image item.image fill-320x240 %}
+                                        <p>
+                                            {{ item.caption }}
+                                        </p>
+                                    </div>
+                                    {% endfor %}
+                                    <p>
+                                        {{ page.body|richtext }}
+                                    </p>
+                                    {% with categories=page.categories.all %}
+                                    {% if categories %}
+                                    <h4>Posted in:</h4>
+                                    <ul>
+                                        {% for category in categories %}
+                                        <li>{% image category.icon fill-32x32 style="vertical-align: middle" %}
+                                            {{ category.name }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                    {% endwith %}
+                                </div>
+                                {% if page.tags.all.count %}
+                                <div class="tags" style="margin-top: 50px;">
+                                    <h5>Tags</h5>
+                                    {% for tag in page.tags.all %}
+                                    <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
+                                    {% endfor %}
+                                    <h4 style="float: right;"><a href="{{ page.get_parent.url }}">Return to blog</a></h4>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

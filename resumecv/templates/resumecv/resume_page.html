@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+
+{% block header %}
+
+{% include 'home/menu.html' %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<!-- 
+    Card - Resume
+-->
+<div class="card-inner active" id="resume-card">
+    <div class="row card-container">
+            
+        <!--
+            Card Wrap
+        -->
+        <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+
+            <!-- Resume Image -->
+            <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url(../media/pencil.jpg);"></div>
+
+            <!--
+                Inner Top
+            -->
+            <div class="content inner-top">
+                <div class="row">
+                    <div class=" col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title-bg">{{ page.heading }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                Resume
+            -->
+            <div class="content resume">
+                <div class="row">
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+
+                        <!-- title -->
+                        <div class="title"><span>My</span> Experience</div>
+                        
+                        
+
+                        <!-- resume items -->
+                        {% with experiences=page.experience_item.all %}
+                        {% for experience in experiences %}
+                        <div class="resume-items card-box">
+
+                            <!-- resume item -->
+                            <div class="resume-item">
+                                <div class="name">{{ experience.title }}</div>
+                                <div class="date">{{ experience.dates }} <span>|</span>{{experience.company_location}}</div>
+                                <p>
+                                    {{ experience.description | richtext }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                            {% endwith %}
+
+                        </div>
+                    </div>
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+
+                        <!-- title -->
+                        <div class="title"><span>My</span> Education</div>
+
+                        <!-- resume items -->
+                       {% with educations=page.education_item.all %}
+                        {% for education in educations %}
+                        <div class="resume-items card-box">
+
+                            <!-- resume item -->
+                            <div class="resume-item">
+                                <div class="name">{{ education.title }}</div>
+                                <div class="date">{{ education.dates }} <span>|</span>{{ education.company_location}}</div>
+                                <p>
+                                    {{ education.description | richtext }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                            {% endwith %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                Skills
+            -->
+            <div class="content skills">
+                <div class="row">
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+
+
+                        <!-- title -->
+                        <div class="title"><span>Personal</span> Skills</div>
+
+                        <!-- skills -->
+                        {% with skills=page.PersonalSkills.all %}
+                        {% if skills %}
+                        <div class="skills-list card-box">
+                            <ul>
+                                {% for skill in skills %}
+                                <li> 
+                                    <div class="name">{{ skill.name }}</div>
+                                    <div class="progress">
+                                        <div class="percentage" style="width:{{ skill.percent }};"></div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+
+                    </div>
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+
+                        <!-- title -->
+                        <div class="title"><span>Professional</span> Skills</div>
+
+
+                        {% with skills=page.TechnicalSkills.all %}
+                        {% if skills %}
+                        <!-- skills -->
+                        <div class="skills-list card-box">
+                            <ul>
+                                {% for skill in skills %}
+                                <li> 
+                                    <div class="name">{{ skill.name }}</div>
+                                    <div class="progress">
+                                        <div class="percentage" style="width:{{ skill.percent }};"></div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

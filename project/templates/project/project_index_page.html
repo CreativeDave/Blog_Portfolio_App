@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+
+{% block header %}
+
+{% include 'home/menu.html' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card-inner active" id="works-card">
+    <div class="row card-container">
+        <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+
+            <!-- Work Image -->
+            <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url(images/profile3.jpg);"></div>
+
+            
+            <!--Inner Top-->
+            <div class="content inner-top">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title-bg">Portfolio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                Works
+            -->
+            <div class="content works">
+                <div class="row">
+                    <div class="col col-m-12 col-t-5 col-d-5 col-d-lg-5">
+                        <div class="title"><span>My</span> Projects</div>
+                    </div>
+                    <div class="col col-m-12 col-t-7 col-d-7 col-d-lg-7">
+
+                        <!-- filters -->
+                        {% with categories=page.categories.all %}
+                        {% if categories %}
+
+                        <div class="filter-menu filter-button-group">
+
+                            <div class="f_btn active">
+                                <label><input type="radio" name="fl_radio" value="grid-item" />All</label>
+                            </div>
+
+                            {% for category in categories %}
+
+                            <div class="f_btn">
+                                <label><input type="radio" name="fl_radio" value="{{ category.name }}" />{{ category.name }}</label>
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                        {% endif %}
+                        {% endwith %}
+
+                    </div>
+                </div>
+
+                <!-- work items -->
+            
+
+                <div class="row grid-items">
+
+                {% for post in projectpages %}
+                {% with post=post.specific %}
+                
+                    {% with categories=post.categories.all %}              
+                    {% with post.main_image as main_image %}
+                        {% if main_image %}
+
+                        {% if categories %}
+                            {% for category in categories %} 
+
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item {{ category.name }}">
+                        <div class="box-item card-box">
+                            <div class="image">
+                                <a href="{% pageurl post %}" class="">
+                                    {% image main_image fill-800x375 %}
+                                    <span class="info">
+                                        <span class="icon fa fa-wrench"></span>
+                                    </span>
+                                </a>
+                            </div>
+                            
+                            <div class="desc">
+                                <a href="{% pageurl post %}" class="name has-popup-image">{{ post.title }}</a>
+                                
+                                <div class="category">{{ category.name }}</div>
+                            </div>
+
+                                {% endfor %}
+                        {% endif %}
+
+                        </div>
+                    </div>
+                        {% endif %}
+                    {% endwith %}
+                    {% endwith%}
+
+                {% endwith %}
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

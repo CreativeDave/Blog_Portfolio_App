@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+
+{% block header %}
+
+    {% include 'home/home_menu.html' %}
+
+{% endblock%}
+
+{% block content %}
+
+            
+<!--Home started-->          
+<div class="card-inner card-started active" id="home-card">
+    <div id= "particles-bg" class="slide" style="background-color: #242425;"></div>
+    
+    <div class="centrize full-width">
+        <div class="vertical-center">
+
+            <!-- Started titles -->
+            <div class="title"><span>Hello, I'm </span>{{ page.name }}.</div>
+            <div class="subtitle">
+                I am
+
+                {% with roles=page.role_titles.all %}
+                {% if roles %}
+                {% for role in roles %} 
+                <div class="typing-title"> 
+                    <p>a <strong style="color:#a0cb90">{{ role.role }}.</strong></p>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <span class="typed-title"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

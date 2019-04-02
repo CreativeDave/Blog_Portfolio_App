@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags widget_tweaks %}
+        
+{% block header %}{% include 'home/menu.html' %}{% endblock %}
+
+{% block content %}
+
+<div class="card-inner  active" id="contacts-card">
+    <div class="row card-container">
+        
+        <!-- Card Wrap -->
+        <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+            
+            <!-- Map -->
+            <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6">
+                <div class="map" id="map"></div>
+            </div>
+                
+            
+            <!--Inner Top-->
+            <div class="content inner-top">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title-bg">Success</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!--Contacts Info-->
+            <div class="content contacts-info">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+
+                        <!-- title -->
+                        <div class="title"><span></span></div>
+                    </div>
+                </div>
+            </div>
+
+    <!-- contacts item -->
+            <div class="col col-m-12 col-t-12 col-d-6 col-d-lg-12">
+                <div class="contacts-item card-box">
+                    <div class="icon"><i class="la la-map-marker"></i></div>
+                    <div class="content title">
+                    
+                        <span>{{ page.thank_you_text | richtext }}</span>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+
+{% block header %} {% include 'home/menu.html' %} {% endblock %}
+
+{% block content %}
+
+<!-- Card - Blog--> 
+<div class="card-inner blogs active" id="blog-card">
+    <div class="row card-container" >
+
+         <!--Card Wrap-->
+        <div class="card-wrap blogs-content col col-m-12 col-t-12 col-d-9 col-d-lg-9" data-simplebar>
+            
+            <!--Inner Top-->
+            <div class="content inner-top">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title-bg">{{ page.title }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Blog-->
+            <div class="content blog">
+
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <!-- title -->
+                        <div class="title"><span>All</span> Posts</div>
+                    </div>
+                </div>
+               
+                <!-- blog items -->
+                <div class="row grid-items">
+                    {% for post in blogpages %}
+                    {% with post=post.specific %}
+                        
+                    {% with post.main_image as main_image %}
+                    {% with categories=post.categories.all %}
+                    {% if main_image %}
+
+                    {% if categories %}
+                    {% for category in categories %} 
+                    <div class="col col-m-12 col-t-12 col-d-6 col-d-lg-6 grid-item {{ category.name }}">
+                        <div class="box-item card-box">
+                            <div class="image">
+                                <a href="{% pageurl post %}">
+                                    {% image main_image fill-800x375 %}
+                                    <span class="info">
+                                        <span class="icon fa fa-newspaper-o"></span>
+                                    </span>
+                                    <span class="date"><strong></strong>{{ post.date }}</span>
+                                </a>
+                            </div>
+                            <div class="desc">
+                                <a href="{% pageurl post %}">{{ post.title }}</a>
+                                <p>{{ post.intro }}</p>
+                                <div class="category">{{ category.name }} </div>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    {% endwith %}
+
+                    {% endwith%}
+                    {% endfor %}
+                </div>
+            </div> 
+        </div>
+
+        <!--blog panel -->
+        <div class="card-wrap blogs-sidebar col col-m-12 col-t-12 col-d-3 col-d-lg-3">
+            <aside id="secondary" class="widget-area">
+
+                <div class="widget widget_search">
+                    <form role="search" method="get" class="search-form"></form>
+                </div>
+
+                <!--recent entries-->
+                <div class="widget widget_recent_entries">
+                    <h2 class="widget-title">Recent Entries</h2>
+                    {% for post in blogpages %}
+                    {% with post=post.specific %}
+                    <ul>
+                        <li><a href="{% pageurl post %}">{{ post.title }}</a></li>
+                    </ul>
+                    {% endwith %}
+                    {% endfor %}
+                </div>
+
+                <!--archives-->
+                <div class="widget widget_archive">
+                    <h2 class="widget-title">Archives</h2>
+                    <ul>
+                        <li><a href="#">April 2019</a></li>
+                        <li><a href="#">March 2019</a></li>
+                    </ul>
+                </div>
+
+                <!--categories-->
+                <div class="widget widget_categories">
+                    <div class="filter-menu filter-button-group ">
+                        <div class= "f_btn active">
+                            <div class="title"><label><input type="radio" name="fl_radio" value="grid-item"/><h2 class="widget-title"><span>All </span>Categories</h2></label></div>
+                        </div>
+                        {% with categories=page.categories.all %}
+                        {% if categories %}
+                        <ul>
+                            {% for category in categories %}
+                            <div class="f_btn">
+                                <li class="cat-item cat-item-2"><label><input type="radio" name="fl_radio" value="{{ category.name }}" />{{ category.name }}</label></li>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

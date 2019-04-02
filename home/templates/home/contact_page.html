@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags widget_tweaks %}
+        
+{% block header %}{% include 'home/menu.html' %}{% endblock %}
+
+{% block content %}
+
+<div class="card-inner  active" id="contacts-card">
+    <div class="row card-container">
+        
+        <!-- Card Wrap -->
+        <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+            
+            <!-- Map -->
+            <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6">
+                <div class="map" id="map"></div>
+            </div>
+                
+            
+            <!--Inner Top-->
+            <div class="content inner-top">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title-bg">{{ page.title }}</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!--Contacts Info-->
+            <div class="content contacts-info">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+
+                        <!-- title -->
+                        <div class="title"><span>My</span> details</div>
+                    </div>
+                </div>
+
+                <!-- contacts items -->
+                <div class="row contacts-items">
+
+                    <!-- contacts item -->
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="contacts-item card-box">
+                            <div class="icon"><i class="fa fa-map-marker"></i></div>
+                            <div class="name">Location</div>
+                            <p>
+                                {{ page.location }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- contacts item -->
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="contacts-item card-box">
+                            <div class="icon"><i class="fa fa-at"></i></div>
+                            <div class="name">Email</div>
+                            <p>
+                                {{ page.email_address }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- contacts item -->
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="contacts-item card-box">
+                            <div class="icon"><i class="fa fa-phone"></i></div>
+                            <div class="name">Mobile</div>
+                            <p>
+                                {{ page.phone_number }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- contacts item -->
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="contacts-item card-box">
+                            <div class="icon"><i class="fa fa-check-square"></i></div>
+                            <div class="name">Let's link up.</div>
+                            <p>
+                                Send me a message below.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!--Contacts Form-->
+            <div class="content contacts-form">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title"><span>Get</span> in touch</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+
+                        <!-- form -->
+                        <div class="contact_form card-box">
+                            <form action="{% pageurl page %}" method="POST">
+                                {% csrf_token %}
+                                {% if form.non_field_errors %}
+                                <div class="alert alert-danger" role="alert">
+                                {% for error in form.non_field_errors %}
+                                {{ error }}
+                                {% endfor %}
+                                </div>
+                                {% endif %}
+                                <div class="row">
+                                    {% for field in form.visible_fields %}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                        <div class="group-val">
+                                            {{ field.label_tag }}
+                                            {% render_field field class+="form-control" placeholder=field.help_text %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}       
+                                </div>
+                                <div class="row col col-m-12 col-t-6 col-d-6 col-d-lg-6 align-bottom">
+                                    <div class="button">
+                                        <button type="submit" span class="text"></span> Send</button>
+                                        <span class="icon"><i class="fa fa-arrow-right"></i></span>    
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+        
+{% block header %}{% include 'home/menu.html' %}{% endblock %}
+
+{% block content %}
+            
+<!-- Card - About -->
+<div class="card-inner active" id="about-card">
+    <div class="row card-container">
+
+        <!--Card Wrap-->
+        <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+
+            <!-- About Image -->
+            <div class="slide card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style= "background-color: #1A1A1C;margin:0;padding:2px;">
+                <div class="cats" style="padding-left:60px;padding-top:6px;">{% image page.image width-800%}</div></div>
+            
+            
+            <!--Inner Top-->
+            <div class="content inner-top">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title-bg">About Me</div>
+                        <div class="text">
+                            <p>
+                                <strong>Thank you</strong> for visiting my site. I'm a junior<br />
+                                web application developer with a <strong>love </strong>for technical <br />
+                                problem solving, a <strong>ready</strong> appetite for constant challenge,<br />
+                                and a deep, abiding confidence that <strong>people</strong> make<br />
+                                the <strong>world go around.</strong>
+                            </p>
+                        </div>
+                        <div class="circle-bts">
+                            <a href="{{ page.resume.url }}"><span><i class="icon fa fa-arrow-down"></i>Download CV</span></a>              
+                                {% for link in page.related_links.all %}
+                            <a href="{{ link.url }}"><i class="icon fa">{% image link.icon fill-44x44 %}</i></a>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--knowledge base-->
+            <div class="content services">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title"><span>My</span> Knowledge</div>
+                    </div>
+                </div>
+                {% with knowledge_base=page.knowledge_base.all %}
+                {% if knowledge_base %}
+                <div class="row service-items">
+                    {% for skill in knowledge_base %}
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="service-item card-box">
+                            <div class="icon">{% image skill.icon fill-30x30 %}</div>
+                            <div class="name">{{ skill.skill }}</div>
+                            <p>{{ skill.description }}.</p>                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+            
+            <!--Highlights -->
+            <div class="content pricing">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title"><span>My</span> Highlights</div>
+                    </div>
+                </div>
+
+                <!-- professional highlights -->
+                <div class="row pricing-items">
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="pricing-item card-box">
+                            {% with highlight=page.left_highlight.all %}
+                            {% if highlight %}
+                            {% for highlight in highlight %}
+                            <div class="icon">{% image highlight.icon fill-40x40 %} </div>
+                            <div class="name">{{ highlight.title }}</div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+
+                            <!--bullets-->
+                            <div class="feature-list">
+                                {% with highlight=page.left_highlight_bullet.all %}
+                                {% if highlight %}
+                                {% for bullet in highlight %}
+                                <ul>
+                                    <li>{{ bullet.bullet }}</li>
+                                </ul>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- personal highlights -->
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="pricing-item card-box">
+                            {% with highlight=page.right_highlight.all %}
+                            {% if highlight %}
+                            {% for highlight in highlight %}
+                            <div class="icon">{% image highlight.icon fill-40x40 %} </div>
+                            <div class="name">{{ highlight.title }}</div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                            <div class="feature-list">
+                                {% with highlight=page.right_highlight_bullet.all %}
+                                {% if highlight %}
+                                {% for bullet in highlight %}
+                                <ul>
+                                    <li>{{ bullet.bullet }}</li>
+                                </ul>
+                                {% endfor%}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Fun Fact-->
+            <div class="content fuct">
+                <div class="row">
+                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <div class="title"><span>Fun</span> Facts</div>
+                    </div>
+                </div>
+
+                <!-- fun items -->
+                <div class="row fuct-items">
+                    {% with facts=page.fun_fact.all %}
+                    {% if facts %}
+                    {% for fact in facts %}
+                    <div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
+                        <div class="fuct-item card-box">
+                            <div class="icon">{% image fact.icon fill-24x24 %}</div>
+                            <div class="name">{{ fact.fact }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+                    
+            
+            
