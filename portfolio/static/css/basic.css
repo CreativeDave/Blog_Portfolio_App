@@ -19,7 +19,9 @@
 */
 
 .cats {
- background-image: -moz-linear-gradient(0deg, #1A1A1C, #1A1A1C 2px, #292a2e 2px, #292a2e 4px, #202125 4px,);background-image: -webkit-linear-gradient(0deg, #1A1A1C, #1A1A1C 2px, #292a2e 2px, #292a2e 4px, #1A1A1C 4px);background-repeat: repeat;background-size: 5px 10px;}
+ background-image: -moz-linear-gradient(0deg, #1A1A1C, #1A1A1C 2px, #292a2e 2px, #292a2e 4px, #202125 4px,);
+ background-image: -webkit-linear-gradient(0deg, #1A1A1C, #1A1A1C 2px, #292a2e 2px, #292a2e 4px, #1A1A1C 4px);
+ background-repeat: repeat;background-size: 5px 10px;}
 
 
 html {
