@@ -136,3 +136,8 @@
 </div>
 
 {% endblock %}
+{% block extra_js %}
+
+<script src="https://maps.google.com/maps/api/js?key={{ page.get_api_key }}"></script>
+
+{% endblock %}

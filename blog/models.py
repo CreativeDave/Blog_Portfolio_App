@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from django.conf import settings
 
 
 class BlogTagIndexPage(Page):
@@ -21,8 +22,6 @@ class BlogTagIndexPage(Page):
         # Filter by tag
         tag = request.GET.get('tag')
         blogpages = BlogPage.objects.filter(tags__name=tag)
-
-        # Update template context
         context = super().get_context(request)
         context['blogpages'] = blogpages
         return context

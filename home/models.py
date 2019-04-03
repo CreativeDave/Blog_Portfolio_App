@@ -1,6 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 from django import forms
 from django.db import models
+from django.conf import settings
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -171,6 +173,7 @@ class FunFact(models.Model):
 
 
 class ContactPage(AbstractEmailForm):
+    api_key = settings.GOOGLE_MAPS_API_KEY
     location = models.CharField(max_length=50, blank=True)
     email_address = models.CharField(max_length=50, blank=True)
     phone_number = models.CharField(
@@ -179,10 +182,10 @@ class ContactPage(AbstractEmailForm):
 
     content_panels = AbstractEmailForm.content_panels + [
         MultiFieldPanel([
-                FieldPanel('location'),
-                FieldPanel('email_address', heading='email address'),
-                FieldPanel('phone_number', heading='phone number'),
-            ], heading='contact page information'),
+            FieldPanel('location'),
+            FieldPanel('email_address', heading='email address'),
+            FieldPanel('phone_number', heading='phone number'),
+        ], heading='contact page information'),
         InlinePanel('custom_form_fields', label="Form fields"),
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([
@@ -192,12 +195,14 @@ class ContactPage(AbstractEmailForm):
             ]),
             FieldPanel('subject'),
         ], "Email Notification Config"),
-
-
     ]
 
     def get_form_fields(self):
         return self.custom_form_fields.all()
+
+    def get_api_key(request):
+        api_key = settings.GOOGLE_MAPS_API_KEY
+        return api_key
 
 
 class FormField(AbstractFormField):
