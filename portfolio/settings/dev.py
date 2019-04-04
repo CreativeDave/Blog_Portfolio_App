@@ -1,7 +1,7 @@
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'TRUE'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'developmentsecretkey'
@@ -16,3 +16,8 @@ try:
     from .local import *
 except ImportError:
     pass
+
+'''
+if __name__ == "__main__":
+    pass
+'''

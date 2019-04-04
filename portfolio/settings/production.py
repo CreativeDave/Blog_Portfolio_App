@@ -1,6 +1,7 @@
+
 from .base import *
 
-DEBUG = False
+DEBUG = 'FALSE'
 
 ALLOWED_HOSTS = ['www.davidlevwilson.com']
 
@@ -10,9 +11,9 @@ with open('/home/DavidW/secret_key.txt') as f:
 ADMINS = ('Webmaster', 'dave@davidlevwilson.com')
 MANAGERS = ADMINS
 
-CSRF_COOKIE_SECURE = TRUE
+CSRF_COOKIE_SECURE = True
 
-SESSION_COOKIE_SECURE = TRUE
+SESSION_COOKIE_SECURE = True
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'dave@davidlevwilson.com'
