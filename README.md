@@ -1,5 +1,6 @@
 # Blog Portfolio App
 > A dynamic blog, portfolio, and resume application enabling a user to customize nearly every detail of content through an intuitively designed backend interface. 
+
 !['image'](./media/about.gif)
 ## Project Overview
 
