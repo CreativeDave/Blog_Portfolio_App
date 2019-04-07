@@ -55,14 +55,15 @@
                                 </a>
                             </div>
                             <div class="desc">
-                                <a href="{% pageurl post %}">{{ post.title }}</a>
+                                <a href="{% pageurl post %}"><strong>{{ post.title }}</strong></a>
                                 <p>{{ post.intro }}</p>
                                 <div class="category">{{ category.name }} </div>
                             </div>
-                        {% endfor %}
-                        {% endif %}
                         </div>
                     </div>
+                    {% endfor %}
+                    {% endif %}
+
                     {% endif %}
                     {% endwith %}
                     {% endwith %}
