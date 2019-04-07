@@ -40,7 +40,7 @@
                     <div class="col col-m-12 col-t-5 col-d-5 col-d-lg-5">
 
                         <!-- title -->
-                        <div class="title"><a href="#popup-1" class="name has-popup-media"><span>{{ page.title }} App </span><u>Overview</u></a></div>
+                        <div class="title"><a href="#popup-1" class="name has-popup-media"><span>{{ page.title }} </span><u>Overview</u></a></div>
 
                         <div id="popup-1" class="popup-box mfp-fade mfp-hide">
                             <div class="content">
@@ -54,19 +54,19 @@
                                 <div class="desc">
                                     <div class="post-box">
                                         <h1>{{ post.title }}</h1>                     
-                                        <div class="blog-detail">Photo</div>
+                                        <div class="blog-detail"></div>
                                         <div class="blog-content">
                                             <p>
-                                                {{ page.intro|richtext }}
+                                                <b>{{ page.intro|richtext }}</b>
                                             </p>
                                             <blockquote>
                                                 {{ page.outcome|richtext }}
                                             </blockquote>
                                             <p>
-                                              {{ page.description|richtext }}
+                                              {{ page.description | richtext }}
                                             </p>
                                         </div>              
-                                            <a href="{{ page.related_link }}"class="button">
+                                            <a href="{{ page.related_link }}" target="_blank"class="button">
                                             <span class="text"> View Project </span>
                                             <span class="arrow">{{ page.related_link_name }}</span>
                                         </a>
@@ -91,7 +91,7 @@
                     <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item design">
                         <div class="box-item card-box">
                             <div class="image">
-                                <a href="{{ post.related_link }}" class="">
+                                <a href="{{ post.related_link }}" target="_blank" class="">
                                     {% image main_image fill-800x375 %}
                                      <span class="info">
                                         <span class="icon fa fa-gear"></span>
@@ -99,8 +99,8 @@
                                 </a>
                             </div>
                             <div class="desc">
-                                <a href="{{ post.related_link }}" class="name ">{{ post.title }}</a>
-                                <div class="category">{{ post.related_link_name }}</div>
+                                <a href="{{ post.related_link }}" target="_blank" class="name ">{{ post.title }}</a>
+                                <div class="category">View on {{ post.related_link_name }}</div>
                             </div>  
                         </div>
                     </div>

@@ -25,11 +25,11 @@
                         <div class="title-bg">About Me</div>
                         <div class="text">
                             <p>
-                                <strong>Thank you</strong> for visiting my site. I'm a junior<br />
-                                web application developer with a <strong>love </strong>for technical <br />
-                                problem solving, a <strong>ready</strong> appetite for constant challenge,<br />
-                                and a deep, abiding confidence that <strong>people</strong> make<br />
-                                the <strong>world go around.</strong>
+                                <strong>Thank you</strong> for visiting my site. I'm a web application<br />
+                                developer with a <strong>ready </strong>appetite for constant challenge.<br />
+                                My over-arching principle is to <strong>apply</strong> my creativity in a novel<br />
+                                way to develop technology <strong>solutions</strong> that break down<br />
+                                barriers for <strong>inspiration </strong>and <strong>collaboration.</strong>
                             </p>
                         </div>
                         <div class="circle-bts">
@@ -57,7 +57,7 @@
                         <div class="service-item card-box">
                             <div class="icon">{% image skill.icon fill-30x30 %}</div>
                             <div class="name">{{ skill.skill }}</div>
-                            <p>{{ skill.description }}.</p>                            
+                            <p>{{ skill.description|richtext }}</p>                            
                         </div>
                     </div>
                     {% endfor %}
@@ -92,7 +92,7 @@
                                 {% with highlight=page.left_highlight_bullet.all %}
                                 {% if highlight %}
                                 {% for bullet in highlight %}
-                                <ul>
+                                <ul style="list-style-type:disc;">
                                     <li>{{ bullet.bullet }}</li>
                                 </ul>
                                 {% endfor %}
@@ -117,7 +117,7 @@
                                 {% with highlight=page.right_highlight_bullet.all %}
                                 {% if highlight %}
                                 {% for bullet in highlight %}
-                                <ul>
+                                <ul style="list-style-type:disc;">
                                     <li>{{ bullet.bullet }}</li>
                                 </ul>
                                 {% endfor%}

@@ -92,7 +92,7 @@ class KnowledgeBase(models.Model):
     page = ParentalKey(AboutPage, on_delete=models.CASCADE,
                        related_name='knowledge_base')
     skill = models.CharField(max_length=50)
-    description = models.CharField(max_length=50)
+    description = RichTextField(blank=True)
     icon = models.ForeignKey('wagtailimages.Image', on_delete=models.SET_NULL,
                              related_name='+', null=True
                              )
@@ -107,7 +107,7 @@ class KnowledgeBase(models.Model):
 class LeftBullet(models.Model):
     page = ParentalKey(AboutPage, on_delete=models.CASCADE,
                        related_name='left_highlight_bullet')
-    bullet = models.CharField(max_length=100)
+    bullet = models.CharField(max_length=200)
 
     panels = [
         FieldPanel('bullet')
@@ -117,7 +117,7 @@ class LeftBullet(models.Model):
 class RightBullet(models.Model):
     page = ParentalKey(AboutPage, on_delete=models.CASCADE,
                        related_name='right_highlight_bullet')
-    bullet = models.CharField(max_length=100)
+    bullet = models.CharField(max_length=200)
 
     panels = [
         FieldPanel('bullet')

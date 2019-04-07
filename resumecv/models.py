@@ -24,12 +24,10 @@ class ResumePage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('heading', classname="full"),
-        MultiFieldPanel([
-                InlinePanel('experience_item', heading='experience',
-                            label='experience item', min_num=1, max_num=5),
-                InlinePanel('education_item', heading='education',
-                            label='education item', min_num=1, max_num=5),
-        ], heading='Experience/Education'),
+        InlinePanel('experience_item', heading='experience',
+                    label='experience item', min_num=1, max_num=5),
+        InlinePanel('education_item', heading='education',
+                    label='education item', min_num=1, max_num=5),
         FieldPanel('TechnicalSkills', widget=forms.CheckboxSelectMultiple),
         FieldPanel('PersonalSkills', widget=forms.CheckboxSelectMultiple),
 
@@ -42,7 +40,7 @@ class ExperienceSectionItem(models.Model):
     title = models.CharField(max_length=25)
     dates = models.CharField(max_length=50)
     company_location = models.CharField(max_length=250, blank=True)
-    description = RichTextField(max_length=100, blank=True)
+    description = RichTextField(blank=True)
 
     panels = [
         FieldPanel('title'),
@@ -55,10 +53,10 @@ class ExperienceSectionItem(models.Model):
 class EducationSectionItem(models.Model):
     page = ParentalKey(ResumePage, on_delete=models.CASCADE,
                        related_name='education_item')
-    title = models.CharField(max_length=25)
+    title = models.CharField(max_length=50)
     dates = models.CharField(max_length=50)
     company_location = models.CharField(max_length=250, blank=True)
-    description = RichTextField(max_length=100, blank=True)
+    description = RichTextField(blank=True)
 
     panels = [
         FieldPanel('title'),

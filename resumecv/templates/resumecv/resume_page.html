@@ -34,14 +34,18 @@
             <!--Resume  -->
             <div class="content resume">
                 <div class="row">
+
+                    <!-- experience section -->
                     <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
 
-                        <div class="title"><span>My</span> Experience</div>
-                        
-                        <!-- experience items -->
-                        {% with experiences=page.experience_item.all %}
-                        {% for experience in experiences %}
+                        <div class="title">
+                            <span>My</span> Experience
+                        </div>
+
+                            <!--experience items-->
                         <div class="resume-items card-box">
+                            {% with experiences=page.experience_item.all %}
+                            {% for experience in experiences %}
                             <div class="resume-item">
                                 <div class="name">{{ experience.title }}</div>
                                 <div class="date">{{ experience.dates }} <span>|</span>{{experience.company_location}}</div>
@@ -51,18 +55,21 @@
                             </div>
                             {% endfor %}
                             {% endwith %}
-
                         </div>
+                        
                     </div>
+
+                    <!-- education section -->
                     <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
 
-                        <!-- title -->
-                        <div class="title"><span>My</span> Education</div>
+                        <div class="title">
+                            <span>My</span> Education
+                        </div>
 
-                        <!-- education items -->
-                       {% with educations=page.education_item.all %}
-                        {% for education in educations %}
+                        <!--education items-->
                         <div class="resume-items card-box">
+                            {% with educations=page.education_item.all %}
+                            {% for education in educations %}
                             <div class="resume-item">
                                 <div class="name">{{ education.title }}</div>
                                 <div class="date">{{ education.dates }} <span>|</span>{{ education.company_location}}</div>
@@ -72,9 +79,10 @@
                             </div>
                             {% endfor %}
                             {% endwith %}
-
                         </div>
+
                     </div>
+
                 </div>
             </div>
 
@@ -84,7 +92,7 @@
                     <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
 
                         <!-- personal skills items-->
-                        <div class="title"><span>Personal</span> Skills</div>
+                        <div class="title"><span>Soft</span> Skills</div>
                         {% with skills=page.PersonalSkills.all %}
                         {% if skills %}
                         <div class="skills-list card-box">
@@ -105,7 +113,7 @@
 
                     <!--professional skills items-->
                     <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-                        <div class="title"><span>Professional</span> Skills</div>
+                        <div class="title"><span>Technical</span> Skills</div>
                         {% with skills=page.TechnicalSkills.all %}
                         {% if skills %}
                         <div class="skills-list card-box">
