@@ -12,6 +12,10 @@ I treated this as if I were building a product for a client, taking myself throu
 
 Overall, this was an incredible learning experience, and I had to challenge myself to learn much more than just django in the end. Depoying a production version of a website, even a medium-small sized one, can be fraught with unexpected challenges so I started a blog about some of my experiences and the pitfalls I had.
 
+To give credit where credit is due, the initial bootstrap template I purchased for this project came from [www.Envato.com](https://envato.com/), by the author [beshleyua](https://themeforest.net/user/beshleyua). I chose to keep his signature in the CSS and JS files, as my modifications there were minimal. I did however, completely dissect the included static index.html and distribute it about the application to recieve django template tags and render content from my page models. The end result is a tree-structured multi-page dynamic web application, able to instantiate new pages as the user wishes, and with some neat class-specific functionality as well. 
+
+*I hope you will continue exploring this repo to see what all went into building it, with nearly every piece of content user-customizeable.*
+
 ---
 
 ## Project Overview
