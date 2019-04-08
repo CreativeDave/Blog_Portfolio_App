@@ -1,4 +1,4 @@
-!['image'](../media/blog.gif)
+!['image'](../media/content/blog.gif)
 # Blog 
 
 > A blog application with modern functionality adapted from the Wagtail documentation to fit within the scope of this project.
@@ -53,14 +53,14 @@ class BlogIndexPage(Page):
 In the admin portal, this allows the user to create their blog's name, give it an image, and choose categories that will eventually be able to be sorted:
 
 
-!['image'](../media/blogindex.png)
+!['image'](../media/content/blogindex.png)
 
 > If desired, a sub-index could be contained within the main blog that would be something like, "Django tutorial series", or "Hosting on a python paas."  You could still define categories and tags for each post, and they would still be contained within their respective index.
 
 
 To make the posts sortable by category, categories have to be defined on both the blog index page, and the blog pages. The easiest way to do this is to use Wagtails snippet feature and let the user take care of this from within its own section of the portal, as such: 
 
-!['image'](../media/snip.png)
+!['image'](../media/content/snip.png)
 
 ```
 @register_snippet
@@ -102,7 +102,7 @@ content_panels = Page.content_panels + [
 ```
 This is what the end user sees:
 
-!['image'](../media/blog_cat.png)
+!['image'](../media/content/blog_cat.png)
 
 If you will want to acutally be able to use the categories to find the blog posts you're looking for, we need to put them on the html page. 
 
@@ -139,7 +139,7 @@ Here is an edited snippet of the code to make the user-defined category appear a
 ```
 **Now any one who visits the blog can filter posts by category on the blog index page.**
 
-!['image'](../media/category.gif)
+!['image'](../media/content/category.gif)
 
 
 
