@@ -1,7 +1,7 @@
 !['image'](../media/projectP.gif)
 # Projects App
 
-> An app to display your work as an index that lets viewers sort it by category.
+> An intuitive projects repository and showcase app, easily pluggable into any existing website. 
 
 ## Project Requirements
 
