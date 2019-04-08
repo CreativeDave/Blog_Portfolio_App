@@ -104,6 +104,10 @@ The requirements specified that projects need to have a main image. After defini
         else:
             return None
 ```
+
+!['image'](../media/mainimageP.png)
+
+
  So we're returning the first specific image from the objects iterated through by 'post' in the dictionary projectsections and using a pythonic 'if'statement to drop it in our template. 
  
  ```
