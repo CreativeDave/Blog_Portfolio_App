@@ -68,15 +68,15 @@
 
                 <div class="row grid-items">
 
-                {% for post in projectpages %}
-                {% with post=post.specific %}
+                    {% for post in projectpages %}
+                    {% with post=post.specific %}
                 
                     {% with categories=post.categories.all %}              
                     {% with post.main_image as main_image %}
-                        {% if main_image %}
+                    {% if main_image %}
 
                         {% if categories %}
-                            {% for category in categories %} 
+                        {% for category in categories %} 
 
                     <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item {{ category.name }}">
                         <div class="box-item card-box">
@@ -95,22 +95,24 @@
                                 <div class="category">{{ category.name }}</div>
                             </div>
 
-                                {% endfor %}
-                        {% endif %}
-
                         </div>
                     </div>
+
+                        {% endfor %}
                         {% endif %}
+
+                    {% endif %}
                     {% endwith %}
                     {% endwith%}
 
-                {% endwith %}
-                {% endfor %}
+                    {% endwith %}
+                    {% endfor %}
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
 

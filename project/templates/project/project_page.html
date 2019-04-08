@@ -65,10 +65,13 @@
                                             <p>
                                               {{ page.description | richtext }}
                                             </p>
+
                                         </div>              
                                             <a href="{{ page.related_link }}" target="_blank"class="button">
+                                            {% if page.related_link %} 
                                             <span class="text"> View Project </span>
                                             <span class="arrow">{{ page.related_link_name }}</span>
+                                            {% endif %}
                                         </a>
                                     </div>
                                 </div>
@@ -100,7 +103,7 @@
                             </div>
                             <div class="desc">
                                 <a href="{{ post.related_link }}" target="_blank" class="name ">{{ post.title }}</a>
-                                <div class="category">View on {{ post.related_link_name }}</div>
+                                <div class="category">View {{ post.related_link_name }}</div>
                             </div>  
                         </div>
                     </div>
