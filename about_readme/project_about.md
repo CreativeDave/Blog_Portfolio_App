@@ -1,4 +1,4 @@
-!['image'](../media/projectP.gif)
+!['image'](../media/content/projectP.gif)
 # Projects App
 
 > An intuitive projects repository and showcase app, easily pluggable into any existing website. 
@@ -105,7 +105,7 @@ The requirements specified that projects need to have a main image. After defini
             return None
 ```
 
-!['image'](../media/mainimageP.png)
+!['image'](../media/content/mainimageP.png)
 
 
  So we're returning the first specific image from the objects iterated through by 'post' in the dictionary projectsections and using a pythonic 'if'statement to drop it in our template. 
@@ -143,7 +143,7 @@ First, here is what the related links panels look like in the code:
  ```
  and this is what it lets the user accomplish:
  
- !['image'](../media/links.png)
+ !['image'](../media/content/links.png)
  
  When someone clicks on the link from the page howerver, it actually sends an http request to the link specifed by the user. How does django know which one? The following 2 functions tell it.
  
