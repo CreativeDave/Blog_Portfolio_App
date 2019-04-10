@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 
 CSRF_COOKIE_SECURE = True
 
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

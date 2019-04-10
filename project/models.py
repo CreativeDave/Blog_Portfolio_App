@@ -85,7 +85,6 @@ class ProjectPage(Page):
     ]
 
     def get_context(self, request):
-        # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         projectsections = self.get_children().live()
         context['projectsections'] = projectsections
