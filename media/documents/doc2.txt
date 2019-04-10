@@ -1,4 +1,0 @@
-setttings/
-	dev.py
-	production.py
-	local.py
